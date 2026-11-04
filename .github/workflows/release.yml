@@ -1,0 +1,68 @@
+name: Release Desktop App (Windows & macOS)
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag (e.g. v0.1.0)'
+        required: false
+        default: 'v0.1.0'
+
+permissions:
+  contents: write
+
+jobs:
+  build-tauri:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: 'windows-latest'
+            args: '--target x86_64-pc-windows-msvc'
+          - platform: 'macos-latest'
+            args: '--target aarch64-apple-darwin'
+          - platform: 'macos-latest'
+            args: '--target x86_64-apple-darwin'
+
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || 'x86_64-pc-windows-msvc' }}
+
+      - name: Rust cache
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: './src-tauri -> target'
+
+      - name: Install frontend dependencies
+        run: npm ci
+
+      - name: Build and Release with Tauri
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: "${{ github.ref_type == 'tag' && github.ref_name || inputs.tag || 'v0.1.0' }}"
+          releaseName: "AiFile (归档台) ${{ github.ref_type == 'tag' && github.ref_name || inputs.tag || 'v0.1.0' }}"
+          releaseBody: |
+            ## 📥 下载说明 / Downloads
+            - **Windows (x64)**: 下载 `*_x64-setup.exe` 双击安装
+            - **macOS (Apple Silicon M1/M2/M3/M4)**: 下载 `*_aarch64.dmg`
+            - **macOS (Intel)**: 下载 `*_x64.dmg`
+          releaseDraft: false
+          prerelease: false
+          args: ${{ matrix.args }}

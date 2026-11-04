@@ -1,31 +1,62 @@
 # Dependencies
 node_modules/
+.pnp
+.pnp.js
 
-# Build outputs
+# Build & release outputs
 dist/
 dist-ssr/
+release/
 *.tsbuildinfo
+*.exe
+*.msi
+*.dmg
+*.app/
+*.AppImage
+*.deb
+*.rpm
 
 # Tauri / Rust
 src-tauri/target/
 src-tauri/gen/schemas/
 src-tauri/WixTools/
 
-# Local env & databases
+# Secrets, keys, certificates & local environment (NEVER commit)
 *.local
 .env
 .env.*
 !.env.example
+*.key
+*.pem
+*.pfx
+*.p12
+*.crt
+*.cer
+*.der
+.taurikey*
+*secret*
+*credential*
+*apikey*
+*api-key*
+*api_key*
+
+# Local databases & runtime storage
 *.db
 *.db-shm
 *.db-wal
 *.sqlite
 *.sqlite3
+*.sqlite3-shm
+*.sqlite3-wal
+organizer.sqlite3*
 
-# AI / MCP / UI review artifacts
+# AI / MCP / temporary artifacts
 .playwright-mcp/
 .impeccable/
 ui-*.png
+*.tmp
+*.bak
+*.swp
 
 # Logs
 *.log
@@ -39,3 +70,4 @@ pnpm-debug.log*
 .idea/
 .DS_Store
 Thumbs.db
+Desktop.ini

@@ -1,123 +1,157 @@
-/* Watermelon Platform visual refresh */
+/* Watermelon Platform visual refresh — High Contrast & Larger Typography */
 :root {
-  --canvas: #f7f7f4;
+  --canvas: #f2f4f1;
   --paper: #ffffff;
-  --wash: #f1f2ee;
-  --ink: #242624;
-  --muted: #737972;
-  --line: #e6e8e2;
-  --line-strong: #d6dad2;
-  --mint: #ee6257;
-  --mint-dark: #d94d43;
-  --mint-wash: #fff0ee;
-  --shadow: 0 14px 34px rgba(42, 45, 39, .07);
+  --wash: #e8ebe6;
+  --ink: #14171a;
+  --muted: #3d4449;
+  --subtle: #5a626a;
+  --line: #d4d9d2;
+  --line-strong: #b8c0b6;
+  --mint: #e04f44;
+  --mint-dark: #c03429;
+  --mint-wash: #ffe8e5;
+  --shadow: 0 10px 28px rgba(24, 28, 25, .07);
+  --wm-ink: #14171a;
+  --wm-muted: #3d4449;
+  --wm-subtle: #5a626a;
+  --wm-border: #d4d9d2;
+  --wm-border-strong: #b8c0b6;
+  --wm-primary: #e04f44;
+  --wm-primary-strong: #c03429;
+  --wm-primary-soft: #ffe8e5;
 }
+
+::selection { background: rgba(224, 79, 68, .18); color: #14171a; }
+input, textarea { caret-color: var(--mint); }
+* { scrollbar-width: thin; scrollbar-color: #bcc2b8 transparent; }
+*::-webkit-scrollbar { width: 7px; height: 7px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb { border: 2px solid transparent; border-radius: 999px; background-clip: padding-box; background-color: #bcc2b8; }
+*::-webkit-scrollbar-thumb:hover { background-color: #9da499; }
 
 body { background: var(--canvas); color: var(--ink); }
 .app-shell { background: var(--canvas); }
-.sidebar { width: 236px; flex-basis: 236px; border-right-color: var(--line); background: #fbfbf8; padding-top: 23px; }
-.brand-icon { border-radius: 12px; background: var(--mint); box-shadow: 0 7px 16px rgba(238, 98, 87, .19); }
-.brand-lockup strong { font-size: 16px; letter-spacing: -.02em; }
-.primary-nav { gap: 4px; }
-.nav-item { border-radius: 10px; color: #737972; }
-.nav-item:hover { background: #f0f1ed; }
-.nav-item.active { color: var(--mint-dark); background: var(--mint-wash); }
+.sidebar { width: 240px; flex-basis: 240px; border-right-color: var(--line); background: #f8f9f7; padding-top: 14px; }
+.brand-icon { width: 40px; height: 40px; flex: 0 0 40px; border-radius: 10px; background: transparent; box-shadow: none; overflow: hidden; }
+.brand-logo-img { width: 100%; height: 100%; display: block; object-fit: contain; }
+.brand-lockup strong { font-size: 18px; letter-spacing: -.02em; color: var(--ink); }
+.brand-lockup small { color: var(--muted); }
+.primary-nav { gap: 5px; }
+.nav-item { height: 44px; border-radius: 10px; color: #2b3136; font-weight: 500; }
+.nav-item svg { color: #4a5258; }
+.nav-item:hover { background: #eaede8; color: var(--ink); }
+.nav-item.active { color: var(--mint-dark); background: var(--mint-wash); font-weight: 600; }
 .nav-item.active svg { color: var(--mint); }
-.nav-item b { background: #eceee9; }
-.nav-item.active b { color: var(--mint-dark); background: #ffe0dc; }
-.library-item { border-radius: 9px; }
-.library-item:hover { background: #f0f1ed; }
+.nav-item b { background: #e2e6e0; color: var(--ink); }
+.nav-item.active b { color: var(--mint-dark); background: #ffd8d3; }
+.section-label { color: #3d4449; font-weight: 700; }
+.section-label button { color: #3d4449; }
+.library-item { height: 40px; border-radius: 9px; color: #2b3136; font-weight: 500; }
+.library-item small { color: #4a5258; font-weight: 600; }
+.library-item:hover { background: #eaede8; color: var(--ink); }
+.library-item.current { color: var(--ink); background: #eaede8; font-weight: 600; }
+.library-item.active { color: var(--mint-dark); background: var(--mint-wash); font-weight: 600; }
+.library-item.active small { color: var(--mint-dark); }
+.library-item-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sidebar-tree-row { color: #2b3136; font-size: 13.5px; }
+.sidebar-tree-row:hover { color: var(--ink); background: #eaede8; }
+.sidebar-tree-row.active { color: var(--mint-dark); background: var(--mint-wash); font-weight: 600; }
+.sidebar-tree-row.active small { color: var(--mint-dark); }
+.sidebar-tree-folder { color: #9c6a1a; background: #faeccf; }
 .topbar { height: 60px; border-bottom-color: var(--line); background: rgba(251, 251, 248, .92); }
-.breadcrumbs { color: #a1a69f; }
-.breadcrumbs strong { color: #555b56; }
-h1 { color: #282b28; font-size: 28px; letter-spacing: -.02em; }
-h2, h3, h4 { letter-spacing: -.01em; }
-.subtitle { color: #7c827b; }
-.content-scroll { padding-top: 28px; }
+.breadcrumbs { color: #3d4449; }
+.breadcrumbs strong { color: #14171a; }
+h1 { color: #14171a; font-size: 26px; letter-spacing: -.02em; }
+h2, h3, h4 { letter-spacing: -.01em; color: #14171a; }
+.subtitle { color: var(--muted); }
+.content-scroll { padding-top: 26px; }
 .workbench-grid { border-radius: 15px; border-color: var(--line); box-shadow: var(--shadow); }
 .table-heading { min-height: 74px; }
-.table-heading h2 { color: #303430; }
-.table-row { border-bottom-color: #eceee9; }
-.table-row.selected { background: #fff4f2; box-shadow: inset 2px 0 0 var(--mint); }
-.table-header { background: #fafaf7; }
-.detail-panel { background: #fafaf7; }
+.table-heading h2 { color: #14171a; }
+.table-row { border-bottom-color: #e2e6e0; }
+.table-row.selected { background: #fff2f0; box-shadow: inset 2px 0 0 var(--mint); }
+.table-header { background: #f6f7f5; color: #3d4449; }
+.detail-panel { background: #f6f7f5; }
 .detail-head { min-height: 74px; }
-.detail-head h2 { color: #303430; }
+.detail-head h2 { color: #14171a; }
 .folder-snapshot, .recommendation-block { border-radius: 12px; border-color: var(--line); background: var(--paper); box-shadow: none; padding: 0; }
-.recommendation-block { background: #fff7f5; border-color: #f3d7d1; }
-.recommendation-card-head { padding: 12px 13px 9px; border-bottom-color: #f3d7d1; }
+.recommendation-block { background: #fff7f5; border-color: #eebfb7; }
+.recommendation-card-head { padding: 12px 13px 9px; border-bottom-color: #eebfb7; }
 .recommendation-card-content { padding: 11px 13px 13px; }
-.recommend-target { border-color: #f0cfc9; background: #fff; }
+.recommend-target { border-color: #ebbab2; background: #fff; }
 .recommend-target .wm-select { flex: 1; min-width: 0; }
-.recommend-target .wm-select select { border: 0; height: 31px; padding-left: 0; box-shadow: none; background: transparent; font-weight: 600; }
-.wm-button { box-shadow: none; }
-.wm-button[data-variant='default'] { box-shadow: 0 5px 12px rgba(238, 98, 87, .17); }
-.wm-button[data-variant='default']:hover { box-shadow: 0 7px 16px rgba(238, 98, 87, .21); }
-.wm-button[data-variant='outline'] { background: var(--paper); }
-.wm-badge { line-height: 1; }
+.recommend-target .wm-select select { border: 0; height: 34px; padding-left: 0; box-shadow: none; background: transparent; font-weight: 600; }
+.wm-button { box-shadow: none; font-weight: 600; }
+.wm-button[data-variant='default'] { box-shadow: 0 4px 10px rgba(224, 79, 68, .2); }
+.wm-button[data-variant='default']:hover { box-shadow: 0 6px 14px rgba(224, 79, 68, .26); }
+.wm-button[data-variant='outline'] { background: var(--paper); border-color: var(--line-strong); color: var(--ink); }
+.wm-button[data-variant='ghost'] { color: #2b3136; }
+.wm-button:disabled { opacity: 0.65; }
+.wm-badge { line-height: 1; font-weight: 600; }
 .status-dot { width: 5px; height: 5px; border-radius: 999px; background: currentColor; }
-.confirm-button, .secondary-detail-button { min-height: 38px; border-radius: 9px; }
+.confirm-button, .secondary-detail-button { min-height: 40px; border-radius: 9px; }
 .confirm-button { width: 100%; margin-top: 17px; }
 .secondary-detail-button { width: 100%; margin-top: 9px; }
-.archive-bar { background: rgba(255, 255, 255, .95); border-top-color: var(--line); box-shadow: 0 -12px 30px rgba(42, 45, 39, .06); }
-.archive-button { min-height: 38px; }
+.archive-bar { background: rgba(255, 255, 255, .96); border-top-color: var(--line); box-shadow: 0 -12px 30px rgba(24, 28, 25, .07); }
+.archive-button { min-height: 40px; }
 .archive-button:hover:not(:disabled) { background: var(--mint-dark); }
-.settings-section, .history-list, .library-directory, .library-detail { border-color: var(--line); background: var(--paper); border-radius: 14px; box-shadow: 0 10px 28px rgba(42, 45, 39, .04); }
-.settings-section-head { background: #fcfcfa; }
-.setting-row:hover { background: #fcfcfa; }
-.ai-config { background: #fbfbf8; }
-.toast { border-color: #f0d5cf; color: #8b4e47; background: #fff5f2; }
+.settings-section, .history-list, .library-directory, .library-detail { border-color: var(--line); background: var(--paper); border-radius: 14px; box-shadow: 0 10px 28px rgba(24, 28, 25, .05); }
+.settings-section-head { background: #f8f9f7; }
+.setting-row:hover { background: #f8f9f7; }
+.ai-config { background: #f8f9f7; }
+.toast { border-color: #eabbb3; color: #69231c; background: #fff3f0; font-weight: 500; }
 .toast-icon { background: var(--mint); }
 
 @media (max-width: 1100px) {
-  .sidebar { width: 208px; flex-basis: 208px; }
+  .sidebar { width: 212px; flex-basis: 212px; }
 }
 
 @media (max-width: 560px) {
   .sidebar { width: 64px; flex-basis: 64px; }
-  .wm-button[data-size='lg'] { height: 38px; }
+  .wm-button[data-size='lg'] { height: 40px; }
   h1 { font-size: 24px; }
 }
 
-/* Typography pass: lift every UI role by two pixels while keeping the workbench density. */
+/* Balanced desktop workbench typography scale (Upgraded for clarity) */
 :root { --ui-mono: 'SFMono-Regular', 'Cascadia Mono', 'Segoe UI Mono', Consolas, monospace; }
-body, button, input, select { line-height: 1.45; }
+body, button, input, select { line-height: 1.5; }
 
-/* Display and navigation roles. */
+/* Display and navigation roles */
 .brand-lockup strong { font-size: 18px; }
-h1, .workspace-head h1, .page-header h1 { font-size: 30px; }
+.workspace-head h1, .page-header h1 { font-size: 26px; }
 .detail-title-row h2 { font-size: 21px; }
-.table-heading h2, .settings-section-head h2 { font-size: 15px; }
+.table-heading h2, .settings-section-head h2 { font-size: 16px; }
 .detail-head h2 { font-size: 18px; }
-.folder-tree-head h3, .preview-head h3 { font-size: 13px; }
+.folder-tree-head h3, .preview-head h3 { font-size: 14.5px; }
 
-/* Primary and supporting copy. */
+/* Primary and supporting copy */
 .nav-item { font-size: 15px; }
-.library-item, .breadcrumbs, .subtitle, .button, .import-menu strong { font-size: 14px; }
+.library-item, .breadcrumbs, .subtitle, .button, .import-menu strong { font-size: 14.5px; }
 .notice-strip, .filter-tabs button, .filter-button, .search-box input,
 .table-row, .name-cell strong, .empty-table, .archive-button,
 .library-facts dd, .profile-card strong, .profile-preview p,
-.ai-config input, .toast { font-size: 13px; }
+.ai-config input, .toast { font-size: 14px; }
 .table-heading p, .snapshot-top, .detail-section h4, .detail-section p,
 .completed-note, .archive-summary strong, .profile-card button,
-.folder-tree-row, .history-foot, .settings-section-head p { font-size: 12px; }
-.object-summary h3 { font-size: 15px; }
-.object-summary p, .panel-kicker, .table-foot, .path-step strong { font-size: 11px; }
-.block-label { font-size: 12px; }
-.empty-table strong { font-size: 14px; }
-.sidebar-footnote strong { font-size: 13px; }
-.sync-status { font-size: 13px; }
+.folder-tree-row, .history-foot, .settings-section-head p { font-size: 13.5px; }
+.object-summary h3 { font-size: 16px; }
+.object-summary p, .panel-kicker, .table-foot, .path-step strong { font-size: 12.5px; }
+.block-label { font-size: 13px; }
+.empty-table strong { font-size: 15px; }
+.sidebar-footnote strong { font-size: 14px; }
+.sync-status { font-size: 13.5px; }
 .avatar { font-size: 14px; }
-.button-caret { font-size: 16px; }
-.table-header { font-size: 12px; }
-.recommend-target select { font-size: 13px; }
-.confirm-button, .secondary-detail-button { font-size: 13px; }
-.summary-count { font-size: 14px; }
+.button-caret { font-size: 15px; }
+.table-header { font-size: 13px; }
+.recommend-target select { font-size: 14px; }
+.confirm-button, .secondary-detail-button { font-size: 14px; }
+.summary-count { font-size: 15px; }
 
-/* Metadata and compact labels. */
+/* Metadata and compact labels */
 .brand-lockup small, .section-label, .nav-item b, .library-item small,
 .import-menu small, .notice-strip button, .status-pill, .segmented button,
-.select-like, .pause-button, .setting-value, .ai-config label > span { font-size: 12px; }
+.select-like, .pause-button, .setting-value, .ai-config label > span { font-size: 12.5px; }
 .sidebar-footnote small, .filter-tabs b, .table-heading h2 span,
 .scan-progress small, .name-cell small, .detail-meta, .snapshot-top b,
 .folder-snapshot small, .confidence-copy, .archive-summary small,
@@ -125,27 +159,29 @@ h1, .workspace-head h1, .page-header h1 { font-size: 30px; }
 .available-pill, .library-facts dt, .profile-card small, .preview-head span,
 .preview-tags span, .tree-add-root, .tree-add-button, .folder-tree-head p,
 .tree-depth, .folder-breadcrumb, .folder-tree-row small, .history-main small,
-.history-status, .setting-row small, .ai-config-actions > span { font-size: 11px; }
-.path-step small { font-size: 10px; }
+.history-status, .setting-row small, .ai-config-actions > span { font-size: 12px; }
+.path-step small { font-size: 11.5px; }
 .directory-row strong, .setting-row strong, .profile-card strong,
-.history-main strong, .name-cell strong { font-size: 13px; }
+.history-main strong, .name-cell strong { font-size: 14px; }
 
-/* Watermelon primitives use Tailwind text utilities, so lift those roles too. */
-.wm-button { font-size: 16px; }
-.wm-button[data-size='sm'] { font-size: 14px; }
-.wm-badge { font-size: 13px; }
+/* Watermelon primitives proportional sizing */
+.wm-button { font-size: 14px; height: 38px; }
+.wm-button[data-size='sm'] { font-size: 13.5px; height: 34px; padding: 0 12px; }
+.wm-button[data-size='lg'] { font-size: 15px; height: 42px; }
+.wm-badge { font-size: 12.5px; height: 24px; padding: 0 9px; }
 .wm-card h3 { font-size: 16px; }
-.wm-card table { font-size: 16px; }
+.wm-card table { font-size: 14px; }
 .wm-card th { font-size: 13px; }
-.wm-select select, .wm-input { font-size: 16px; }
+.wm-select select, .wm-input { font-size: 14.5px; height: 40px; }
 
-/* Numbers use an installed system mono stack instead of an unavailable font name. */
-.library-item small, .filter-tabs b, .table-heading h2 span, .snapshot-top b,
-.summary-count, .archive-button span, .directory-row b, .folder-tree-row small {
+/* Tabular system mono numerals */
+.library-item small, .sidebar-tree-row small, .filter-tabs b, .table-heading h2 span,
+.snapshot-top b, .summary-count, .archive-button span, .directory-row b, .folder-tree-row small {
   font-family: var(--ui-mono);
+  font-variant-numeric: tabular-nums;
 }
 
 @media (max-width: 560px) {
-  h1, .workspace-head h1, .page-header h1 { font-size: 26px; }
-  .recommend-cell { font-size: 12px; }
+  h1, .workspace-head h1, .page-header h1 { font-size: 24px; }
+  .recommend-cell { font-size: 13px; }
 }

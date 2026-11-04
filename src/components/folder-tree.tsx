@@ -8,6 +8,8 @@ export type FolderTreeNode = {
   kind?: 'library' | 'folder' | 'none'
   color?: string
   count?: number
+  /** 这个文件夹里有「_规则.md」 */
+  hasRules?: boolean
   children?: FolderTreeNode[]
 }
 

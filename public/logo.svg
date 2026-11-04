@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" fill="none">
+  <defs>
+    <!-- 暖米白纸感底座渐变 -->
+    <linearGradient id="bgGradF" x1="64" y1="32" x2="448" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFDF9" />
+      <stop offset="100%" stop-color="#F2ECE4" />
+    </linearGradient>
+    <!-- 珊瑚红归档台盒体渐变 -->
+    <linearGradient id="boxGradF" x1="104" y1="208" x2="408" y2="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF7468" />
+      <stop offset="100%" stop-color="#E24F44" />
+    </linearGradient>
+    <filter id="shadowF" x="68" y="84" width="376" height="372" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#3E2723" flood-opacity="0.14" />
+    </filter>
+  </defs>
+
+  <!-- 暖白桌面圆角底座 -->
+  <rect x="24" y="24" width="464" height="464" rx="112" fill="url(#bgGradF)" />
+  <rect x="26" y="26" width="460" height="460" rx="110" stroke="#E5DDD3" stroke-width="4" />
+
+  <g filter="url(#shadowF)">
+    <!-- 归档盒后背板 -->
+    <rect x="108" y="148" width="296" height="240" rx="34" fill="#C93E34" />
+
+    <!-- 第 1 层分类隔板：薄荷绿标签 -->
+    <path d="M132 134C132 122.954 140.954 114 152 114H224C232.837 114 240 121.163 240 130V142H360C371.046 142 380 150.954 380 162V260H132V134Z" fill="#FFFFFF" />
+    <rect x="148" y="126" width="76" height="16" rx="8" fill="#479F78" />
+
+    <!-- 第 2 层分类隔板：雾霾蓝标签 -->
+    <path d="M132 178C132 166.954 140.954 158 152 158H206V146C206 137.163 213.163 130 222 130H294C302.837 130 310 137.163 310 146V158H360C371.046 158 380 166.954 380 178V280H132V178Z" fill="#FAF8F5" />
+    <rect x="220" y="142" width="76" height="16" rx="8" fill="#4A7FE0" />
+
+    <!-- 第 3 层分类隔板：琥珀金标签 -->
+    <path d="M132 214C132 202.954 140.954 194 152 194H276V180C276 171.163 283.163 164 292 164H360C368.837 164 376 171.163 376 180V296H132V214Z" fill="#FFFFFF" />
+    <rect x="290" y="176" width="72" height="16" rx="8" fill="#E59A2E" />
+
+    <!-- 珊瑚红前挡板 -->
+    <rect x="104" y="222" width="304" height="186" rx="38" fill="url(#boxGradF)" />
+    <rect x="106" y="224" width="300" height="182" rx="36" stroke="#FFFFFF" stroke-opacity="0.24" stroke-width="3" />
+
+    <!-- 盒身中央纯白圆角几何 "AI" 字母 -->
+    <path
+      d="M216 272L180 360M216 272L252 360M192 338H240"
+      stroke="#FFFFFF"
+      stroke-width="22"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M306 272V360M288 272H324M288 360H324"
+      stroke="#FFFFFF"
+      stroke-width="22"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </g>
+</svg>
