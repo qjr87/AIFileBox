@@ -1,6 +1,6 @@
 <div align="center">
-  <img src="./public/logo.svg" width="108" height="108" alt="AiFile Logo" />
-  <h1>归档台 · AiFile</h1>
+  <img src="./public/logo.svg" width="108" height="108" alt="AIFileBox Logo" />
+  <h1>AIFileBox</h1>
   <p><strong>本地优先的 AI 智能文件分类、重命名与归档桌面工作台</strong></p>
   <p>
     <a href="./README.md">简体中文</a> ·
@@ -13,8 +13,8 @@
     <a href="./docs/README.de.md">Deutsch</a>
   </p>
   <p>
-    <a href="https://github.com/qjr87/AiFile/releases/latest">
-      <img src="https://img.shields.io/github/v/release/qjr87/AiFile?style=flat-square&label=Release&color=e04f44" alt="Latest Release" />
+    <a href="https://github.com/qjr87/AIFileBox/releases/latest">
+      <img src="https://img.shields.io/github/v/release/qjr87/AIFileBox?style=flat-square&label=Release&color=e04f44" alt="Latest Release" />
     </a>
     <a href="./LICENSE">
       <img src="https://img.shields.io/badge/License-MIT-3a9b6e?style=flat-square" alt="License" />
@@ -28,17 +28,17 @@
 
 ## 📥 下载安装（Windows / macOS）
 
-前往 [**GitHub Releases 下载页面**](https://github.com/qjr87/AiFile/releases/latest) 获取最新安装包：
+前往 [**GitHub Releases 下载页面**](https://github.com/qjr87/AIFileBox/releases/latest) 获取最新安装包：
 
 | 平台 | 架构 | 安装包格式 | 说明 |
 | :--- | :--- | :--- | :--- |
-| **Windows** | `x64` (64-bit) | `.exe` (NSIS) / `.msi` | 支持 Windows 10 / 11，双击即可安装 |
+| **Windows** | `x64` (64-bit) | `.exe` (NSIS) | 支持 Windows 10 / 11，双击即可安装 |
 | **macOS (Apple Silicon)** | `aarch64` (M1/M2/M3/M4) | `.dmg` / `.app.tar.gz` | 适用于 Apple 芯片 Mac |
 | **macOS (Intel)** | `x86_64` | `.dmg` / `.app.tar.gz` | 适用于 Intel 芯片 Mac |
 
 > **macOS 首次打开提示**：由于开源应用未进行 Apple 商业公证，若首次启动提示“无法验证开发者”或“已损坏”，请在终端执行：
 > ```bash
-> sudo xattr -rd com.apple.quarantine "/Applications/归档台.app"
+> sudo xattr -rd com.apple.quarantine "/Applications/AIFileBox.app"
 > ```
 
 ---
@@ -98,7 +98,7 @@ npm run build
 # 校验 Rust 后端
 cargo check --manifest-path src-tauri/Cargo.toml
 
-# 打包桌面安装包（Windows 生成 .exe/.msi，macOS 生成 .dmg/.app）
+# 打包桌面安装包（Windows 生成 .exe，macOS 生成 .dmg/.app）
 npm run tauri -- build
 ```
 

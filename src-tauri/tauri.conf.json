@@ -1,6 +1,6 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "归档台",
+  "productName": "AIFileBox",
   "version": "0.1.0",
   "identifier": "com.aifile.organizer",
   "build": {
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "归档台 · AI 文件归档助手",
+        "title": "AIFileBox · AI 文件归档助手",
         "width": 1240,
         "height": 820,
         "minWidth": 960,

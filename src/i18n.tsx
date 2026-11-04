@@ -66,7 +66,7 @@ type TranslationTuple = [
  */
 const DICT: Record<string, TranslationTuple> = {
   // ── 品牌与主导航 ──
-  '归档台': ['歸檔台', 'ArchiveDesk', 'アーカイブ台', '아카이브 데스크', 'ArchiveDesk', 'ArchiveDesk', 'ArchiveDesk'],
+  '归档台': ['AIFileBox', 'AIFileBox', 'AIFileBox', 'AIFileBox', 'AIFileBox', 'AIFileBox', 'AIFileBox'],
   'AI 文件归档助手': ['AI 檔案歸檔助手', 'AI File Archiver', 'AI ファイル整理アシスタント', 'AI 파일 정리 도우미', 'Asistente IA de Archivos', 'Assistant IA de Fichiers', 'KI-Dateiarchivierer'],
   '主导航': ['主導航', 'Main Navigation', 'メインナビゲーション', '주요 탐색', 'Navegación principal', 'Navigation principale', 'Hauptnavigation'],
   'AI 分类': ['AI 分類', 'AI Classify', 'AI 分類', 'AI 분류', 'Clasificar con IA', 'Classer par IA', 'KI-Klassifizierung'],
@@ -1008,6 +1008,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     document.documentElement.lang = locale
+    document.title = `AIFileBox · ${translateWithLocale(locale, 'AI 文件归档助手')}`
   }, [locale])
 
   const setLocale = useCallback((next: LocaleId) => {

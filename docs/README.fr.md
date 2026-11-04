@@ -1,6 +1,6 @@
 <div align="center">
-  <img src="../public/logo.svg" width="108" height="108" alt="AiFile Logo" />
-  <h1>AiFile</h1>
+  <img src="../public/logo.svg" width="108" height="108" alt="AIFileBox Logo" />
+  <h1>AIFileBox</h1>
   <p><strong>Atelier de bureau local propulsé par l'IA pour le classement, le renommage par lots et l'archivage de fichiers</strong></p>
   <p>
     <a href="../README.md">简体中文</a> ·
@@ -18,7 +18,7 @@
 
 ## 📥 Téléchargement et Installation (Windows / macOS)
 
-Téléchargez les derniers installateurs Windows (`.exe` / `.msi`) et macOS (Apple Silicon / Intel `.dmg`) sur [**GitHub Releases**](https://github.com/qjr87/AiFile/releases/latest).
+Téléchargez les derniers installateurs Windows (`.exe`) et macOS (Apple Silicon / Intel `.dmg`) sur [**GitHub Releases**](https://github.com/qjr87/AIFileBox/releases/latest).
 
 ## ✨ Fonctionnalités Clés
 

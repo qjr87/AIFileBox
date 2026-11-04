@@ -1,6 +1,6 @@
 <div align="center">
-  <img src="../public/logo.svg" width="108" height="108" alt="AiFile Logo" />
-  <h1>AiFile (아카이브 데스크)</h1>
+  <img src="../public/logo.svg" width="108" height="108" alt="AIFileBox Logo" />
+  <h1>AIFileBox</h1>
   <p><strong>로컬 우선 AI 파일 분류, 일괄 이름 변경 및 아카이빙 데스크톱 워크벤치</strong></p>
   <p>
     <a href="../README.md">简体中文</a> ·
@@ -18,7 +18,7 @@
 
 ## 📥 다운로드 및 설치 (Windows / macOS)
 
-[**GitHub Releases**](https://github.com/qjr87/AiFile/releases/latest)에서 Windows (`.exe` / `.msi`) 및 macOS (Apple Silicon / Intel `.dmg`)용 최신 설치 파일을 다운로드하세요.
+[**GitHub Releases**](https://github.com/qjr87/AIFileBox/releases/latest)에서 Windows (`.exe`) 및 macOS (Apple Silicon / Intel `.dmg`)용 최신 설치 파일을 다운로드하세요.
 
 ## ✨ 주요 기능
 

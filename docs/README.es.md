@@ -1,6 +1,6 @@
 <div align="center">
-  <img src="../public/logo.svg" width="108" height="108" alt="AiFile Logo" />
-  <h1>AiFile</h1>
+  <img src="../public/logo.svg" width="108" height="108" alt="AIFileBox Logo" />
+  <h1>AIFileBox</h1>
   <p><strong>Espacio de trabajo de escritorio local con IA para clasificación, renombrado masivo y archivado de archivos</strong></p>
   <p>
     <a href="../README.md">简体中文</a> ·
@@ -18,7 +18,7 @@
 
 ## 📥 Descarga e Instalación (Windows / macOS)
 
-Descargue los instaladores más recientes para Windows (`.exe` / `.msi`) y macOS (Apple Silicon / Intel `.dmg`) desde [**GitHub Releases**](https://github.com/qjr87/AiFile/releases/latest).
+Descargue los instaladores más recientes para Windows (`.exe`) y macOS (Apple Silicon / Intel `.dmg`) desde [**GitHub Releases**](https://github.com/qjr87/AIFileBox/releases/latest).
 
 ## ✨ Características Principales
 

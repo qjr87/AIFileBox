@@ -1,6 +1,6 @@
 <div align="center">
-  <img src="../public/logo.svg" width="108" height="108" alt="AiFile Logo" />
-  <h1>AiFile (归档台)</h1>
+  <img src="../public/logo.svg" width="108" height="108" alt="AIFileBox Logo" />
+  <h1>AIFileBox</h1>
   <p><strong>Local-first AI File Classification, Batch Renaming & Archiving Desktop Workbench</strong></p>
   <p>
     <a href="../README.md">简体中文</a> ·
@@ -13,8 +13,8 @@
     <a href="./README.de.md">Deutsch</a>
   </p>
   <p>
-    <a href="https://github.com/qjr87/AiFile/releases/latest">
-      <img src="https://img.shields.io/github/v/release/qjr87/AiFile?style=flat-square&label=Release&color=e04f44" alt="Latest Release" />
+    <a href="https://github.com/qjr87/AIFileBox/releases/latest">
+      <img src="https://img.shields.io/github/v/release/qjr87/AIFileBox?style=flat-square&label=Release&color=e04f44" alt="Latest Release" />
     </a>
     <a href="../LICENSE">
       <img src="https://img.shields.io/badge/License-MIT-3a9b6e?style=flat-square" alt="License" />
@@ -28,17 +28,17 @@
 
 ## 📥 Download & Install (Windows / macOS)
 
-Download the latest installers from [**GitHub Releases**](https://github.com/qjr87/AiFile/releases/latest):
+Download the latest installers from [**GitHub Releases**](https://github.com/qjr87/AIFileBox/releases/latest):
 
 | Platform | Architecture | Package Format | Notes |
 | :--- | :--- | :--- | :--- |
-| **Windows** | `x64` (64-bit) | `.exe` (NSIS) / `.msi` | Windows 10 / 11 installer |
+| **Windows** | `x64` (64-bit) | `.exe` (NSIS) | Windows 10 / 11 installer |
 | **macOS (Apple Silicon)** | `aarch64` (M1/M2/M3/M4) | `.dmg` / `.app.tar.gz` | For Apple Silicon Macs |
 | **macOS (Intel)** | `x86_64` | `.dmg` / `.app.tar.gz` | For Intel-based Macs |
 
 > **macOS First Launch Tip**: If macOS Gatekeeper blocks the unsigned open-source app on first launch, run:
 > ```bash
-> sudo xattr -rd com.apple.quarantine "/Applications/归档台.app"
+> sudo xattr -rd com.apple.quarantine "/Applications/AIFileBox.app"
 > ```
 
 ---

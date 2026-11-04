@@ -1,6 +1,6 @@
 <div align="center">
-  <img src="../public/logo.svg" width="108" height="108" alt="AiFile Logo" />
-  <h1>歸檔台 · AiFile</h1>
+  <img src="../public/logo.svg" width="108" height="108" alt="AIFileBox Logo" />
+  <h1>AIFileBox</h1>
   <p><strong>本地優先的 AI 智慧檔案分類、批次重新命名與歸檔桌面工作台</strong></p>
   <p>
     <a href="../README.md">简体中文</a> ·
@@ -18,7 +18,7 @@
 
 ## 📥 下載安裝（Windows / macOS）
 
-請前往 [**GitHub Releases 下載頁面**](https://github.com/qjr87/AiFile/releases/latest) 取得最新安裝包（支援 Windows `.exe` / `.msi` 與 macOS Apple Silicon / Intel `.dmg`）。
+請前往 [**GitHub Releases 下載頁面**](https://github.com/qjr87/AIFileBox/releases/latest) 取得最新安裝包（支援 Windows `.exe` 與 macOS Apple Silicon / Intel `.dmg`）。
 
 ## ✨ 核心功能
 

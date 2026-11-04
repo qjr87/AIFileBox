@@ -1,6 +1,6 @@
 <div align="center">
-  <img src="../public/logo.svg" width="108" height="108" alt="AiFile Logo" />
-  <h1>AiFile (アーカイブ台)</h1>
+  <img src="../public/logo.svg" width="108" height="108" alt="AIFileBox Logo" />
+  <h1>AIFileBox</h1>
   <p><strong>ローカルファーストの AI ファイル分類・一括リネーム・整理デスクトップワークベンチ</strong></p>
   <p>
     <a href="../README.md">简体中文</a> ·
@@ -18,7 +18,7 @@
 
 ## 📥 ダウンロード（Windows / macOS）
 
-[**GitHub Releases**](https://github.com/qjr87/AiFile/releases/latest) から Windows (`.exe` / `.msi`) および macOS (Apple Silicon / Intel `.dmg`) 用の最新インストーラーをダウンロードできます。
+[**GitHub Releases**](https://github.com/qjr87/AIFileBox/releases/latest) から Windows (`.exe`) および macOS (Apple Silicon / Intel `.dmg`) 用の最新インストーラーをダウンロードできます。
 
 ## ✨ 主な機能
 

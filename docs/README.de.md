@@ -1,6 +1,6 @@
 <div align="center">
-  <img src="../public/logo.svg" width="108" height="108" alt="AiFile Logo" />
-  <h1>AiFile</h1>
+  <img src="../public/logo.svg" width="108" height="108" alt="AIFileBox Logo" />
+  <h1>AIFileBox</h1>
   <p><strong>Lokale KI-Desktop-Workbench zum Klassifizieren, Stapel-Umbenennen und Archivieren von Dateien</strong></p>
   <p>
     <a href="../README.md">简体中文</a> ·
@@ -18,7 +18,7 @@
 
 ## 📥 Download & Installation (Windows / macOS)
 
-Laden Sie die neuesten Installationsprogramme für Windows (`.exe` / `.msi`) und macOS (Apple Silicon / Intel `.dmg`) unter [**GitHub Releases**](https://github.com/qjr87/AiFile/releases/latest) herunter.
+Laden Sie die neuesten Installationsprogramme für Windows (`.exe`) und macOS (Apple Silicon / Intel `.dmg`) unter [**GitHub Releases**](https://github.com/qjr87/AIFileBox/releases/latest) herunter.
 
 ## ✨ Hauptfunktionen
 
