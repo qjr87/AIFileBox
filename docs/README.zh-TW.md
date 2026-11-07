@@ -3,9 +3,9 @@
   <h1>AIFileBox</h1>
   <p><strong>本地優先的 AI 智慧檔案分類、批次重新命名與歸檔桌面工作台</strong></p>
   <p>
-    <a href="../README.md">简体中文</a> ·
+    <a href="../README.md">English</a> ·
+    <a href="./README.zh-CN.md">简体中文</a> ·
     <a href="./README.zh-TW.md">繁體中文</a> ·
-    <a href="./README.en.md">English</a> ·
     <a href="./README.ja.md">日本語</a> ·
     <a href="./README.ko.md">한국어</a> ·
     <a href="./README.es.md">Español</a> ·
@@ -13,6 +13,15 @@
     <a href="./README.de.md">Deutsch</a>
   </p>
 </div>
+
+---
+
+## 📸 介面預覽
+
+![AI 智慧分類與批次重新命名](./screenshots/ai-classify-plan.png)
+![多檔案庫管理工作台](./screenshots/libraries-workbench.png)
+![階層式 Markdown 規則編輯器](./screenshots/markdown-rules.png)
+![AI 請求與 Token 診斷日誌](./screenshots/ai-request-logs.png)
 
 ---
 

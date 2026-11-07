@@ -3,9 +3,9 @@
   <h1>AIFileBox</h1>
   <p><strong>Local-first AI File Classification, Batch Renaming & Archiving Desktop Workbench</strong></p>
   <p>
-    <a href="../README.md">简体中文</a> ·
+    <a href="../README.md">English</a> ·
+    <a href="./README.zh-CN.md">简体中文</a> ·
     <a href="./README.zh-TW.md">繁體中文</a> ·
-    <a href="./README.en.md">English</a> ·
     <a href="./README.ja.md">日本語</a> ·
     <a href="./README.ko.md">한국어</a> ·
     <a href="./README.es.md">Español</a> ·
@@ -23,6 +23,22 @@
     <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20macOS-e8962e?style=flat-square" alt="Platform" />
   </p>
 </div>
+
+---
+
+## 📸 Screenshots
+
+### 1. AI Smart Classification & Batch Renaming (Before vs. After Review Plan)
+![AI Smart Classification & Batch Renaming](./screenshots/ai-classify-plan.png)
+
+### 2. Multi-Library & Folder Hierarchy Workbench
+![Multi-Library Workbench](./screenshots/libraries-workbench.png)
+
+### 3. Hierarchical Markdown Rules & One-Click AI Rule Drafting
+![Hierarchical Markdown Rules Editor](./screenshots/markdown-rules.png)
+
+### 4. Multi-Provider AI & Request / Token Inspector
+![AI Request & Token Usage Logs](./screenshots/ai-request-logs.png)
 
 ---
 
@@ -60,7 +76,7 @@ Download the latest installers from [**GitHub Releases**](https://github.com/qjr
   - **Auditable & Reversible**: Every move/copy operation is logged in a local SQLite database with signature verification and one-click undo.
   - **OS Keychain Protection**: API keys are stored in the native OS credential store (Windows Credential Manager / macOS Keychain).
 - **🌍 8 Built-in Languages**
-  - Simplified Chinese, Traditional Chinese, English, Japanese, Korean, Spanish, French, and German — switchable anytime in **Settings → General**.
+  - English, Simplified Chinese, Traditional Chinese, Japanese, Korean, Spanish, French, and German — switchable anytime in **Settings → General**.
 
 ---
 

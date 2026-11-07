@@ -3,9 +3,9 @@
   <h1>AIFileBox</h1>
   <p><strong>ローカルファーストの AI ファイル分類・一括リネーム・整理デスクトップワークベンチ</strong></p>
   <p>
-    <a href="../README.md">简体中文</a> ·
+    <a href="../README.md">English</a> ·
+    <a href="./README.zh-CN.md">简体中文</a> ·
     <a href="./README.zh-TW.md">繁體中文</a> ·
-    <a href="./README.en.md">English</a> ·
     <a href="./README.ja.md">日本語</a> ·
     <a href="./README.ko.md">한국어</a> ·
     <a href="./README.es.md">Español</a> ·
@@ -13,6 +13,15 @@
     <a href="./README.de.md">Deutsch</a>
   </p>
 </div>
+
+---
+
+## 📸 スクリーンショット
+
+![AI 自動分類＆一括リネーム](./screenshots/ai-classify-plan.png)
+![ライブラリ＆フォルダ階層管理](./screenshots/libraries-workbench.png)
+![階層型 Markdown ルールエディタ](./screenshots/markdown-rules.png)
+![AI リクエスト＆トークン統計](./screenshots/ai-request-logs.png)
 
 ---
 

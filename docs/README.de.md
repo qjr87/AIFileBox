@@ -3,9 +3,9 @@
   <h1>AIFileBox</h1>
   <p><strong>Lokale KI-Desktop-Workbench zum Klassifizieren, Stapel-Umbenennen und Archivieren von Dateien</strong></p>
   <p>
-    <a href="../README.md">简体中文</a> ·
+    <a href="../README.md">English</a> ·
+    <a href="./README.zh-CN.md">简体中文</a> ·
     <a href="./README.zh-TW.md">繁體中文</a> ·
-    <a href="./README.en.md">English</a> ·
     <a href="./README.ja.md">日本語</a> ·
     <a href="./README.ko.md">한국어</a> ·
     <a href="./README.es.md">Español</a> ·
@@ -13,6 +13,15 @@
     <a href="./README.de.md">Deutsch</a>
   </p>
 </div>
+
+---
+
+## 📸 Screenshots
+
+![KI-Klassifizierung & Stapel-Umbenennung](./screenshots/ai-classify-plan.png)
+![Bibliotheken-Workbench](./screenshots/libraries-workbench.png)
+![Hierarchischer Markdown-Regeleditor](./screenshots/markdown-rules.png)
+![KI-Anfrage- & Token-Protokolle](./screenshots/ai-request-logs.png)
 
 ---
 

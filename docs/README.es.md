@@ -3,9 +3,9 @@
   <h1>AIFileBox</h1>
   <p><strong>Espacio de trabajo de escritorio local con IA para clasificación, renombrado masivo y archivado de archivos</strong></p>
   <p>
-    <a href="../README.md">简体中文</a> ·
+    <a href="../README.md">English</a> ·
+    <a href="./README.zh-CN.md">简体中文</a> ·
     <a href="./README.zh-TW.md">繁體中文</a> ·
-    <a href="./README.en.md">English</a> ·
     <a href="./README.ja.md">日本語</a> ·
     <a href="./README.ko.md">한국어</a> ·
     <a href="./README.es.md">Español</a> ·
@@ -13,6 +13,15 @@
     <a href="./README.de.md">Deutsch</a>
   </p>
 </div>
+
+---
+
+## 📸 Capturas de Pantalla
+
+![Clasificación Inteligente con IA y Renombrado Masivo](./screenshots/ai-classify-plan.png)
+![Gestión de Múltiples Bibliotecas](./screenshots/libraries-workbench.png)
+![Editor de Reglas Markdown Jerárquicas](./screenshots/markdown-rules.png)
+![Registro de Solicitudes IA y Tokens](./screenshots/ai-request-logs.png)
 
 ---
 
