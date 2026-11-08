@@ -29,11 +29,11 @@ use tauri::{AppHandle, Emitter};
 use uuid::Uuid;
 
 /// 一次计划最多包含的对象数量。
-const MAX_ITEMS: usize = 200;
+const MAX_ITEMS: usize = 800;
 const SNIPPET_BYTES: u64 = 2048;
 const SNIPPET_CHARS: usize = 1200;
 const FOLDER_SAMPLE_NAMES: usize = 15;
-const MAX_FOLDER_ENTRIES: usize = 500;
+const MAX_FOLDER_ENTRIES: usize = 800;
 /// 第一步发送给 AI 的库内文件夹列表的深度与数量上限。
 const PHASE1_FOLDER_DEPTH: usize = 6;
 const PHASE1_MAX_FOLDERS: usize = 400;
@@ -1959,6 +1959,7 @@ fn validate_sources(paths: Vec<String>) -> Result<Vec<PathBuf>, String> {
         return Err("请先添加要整理的文件或文件夹".into());
     }
     let mut sources = Vec::new();
+    let mut dir_indices = Vec::new();
     let mut seen = HashSet::new();
     for raw in paths {
         let path = canonical(&raw)?;
@@ -1973,6 +1974,7 @@ fn validate_sources(paths: Vec<String>) -> Result<Vec<PathBuf>, String> {
             let inner_files = collect_files_in_dir(&path, MAX_ITEMS + 1);
             if inner_files.is_empty() {
                 if seen.insert(path_key(&path)) {
+                    dir_indices.push(sources.len());
                     sources.push(path);
                 }
             } else {
@@ -1989,13 +1991,14 @@ fn validate_sources(paths: Vec<String>) -> Result<Vec<PathBuf>, String> {
     if sources.len() > MAX_ITEMS {
         return Err(format!("一次最多整理 {MAX_ITEMS} 个对象，请分批进行"));
     }
-    for (index, left) in sources.iter().enumerate() {
-        for right in sources.iter().skip(index + 1) {
-            if path_starts_with(left, right) || path_starts_with(right, left) {
+    for &dir_idx in &dir_indices {
+        let dir_path = &sources[dir_idx];
+        for (other_idx, other) in sources.iter().enumerate() {
+            if dir_idx != other_idx && (path_starts_with(other, dir_path) || path_starts_with(dir_path, other)) {
                 return Err(format!(
                     "「{}」和「{}」互相包含，请只保留其中一个",
-                    file_name_of(left),
-                    file_name_of(right)
+                    file_name_of(dir_path),
+                    file_name_of(other)
                 ));
             }
         }
@@ -2318,31 +2321,75 @@ fn plan_classify(
             "folders": folders_payload(&list_subfolders(&library.root, PHASE1_FOLDER_DEPTH, PHASE1_MAX_FOLDERS)),
         }));
     }
-    emit_progress(app, "phase1", format!("正在按规则总览为 {} 个对象选择文件夹…", sources.len()));
-    let phase1_payload = serde_json::json!({
-        "instruction": instruction,
-        "today": today(),
-        "global_rules": rules::truncate_chars(&global_rules, MAX_RULE_CHARS),
-        "libraries": libraries_payload,
-        "items": items,
+    let phase1_chunks = chunk_item_indices(sources);
+    let total_p1_chunks = phase1_chunks.len();
+    if total_p1_chunks > 1 {
+        emit_progress(
+            app,
+            "phase1",
+            format!("正在分 {total_p1_chunks} 批并发按规则总览为 {} 个对象选择文件夹…", sources.len()),
+        );
+    } else {
+        emit_progress(app, "phase1", format!("正在按规则总览为 {} 个对象选择文件夹…", sources.len()));
+    }
+    let global_rules_clipped = rules::truncate_chars(&global_rules, MAX_RULE_CHARS);
+    let today_str = today();
+    let p1_jobs: Vec<(usize, Vec<usize>)> = phase1_chunks.into_iter().enumerate().collect();
+    let p1_outputs = rules::run_parallel(p1_jobs, AI_CONCURRENCY, |(chunk_idx, indices)| {
+        let chunk_items: Vec<serde_json::Value> = indices.iter().map(|&idx| items[idx].clone()).collect();
+        let phase1_payload = serde_json::json!({
+            "global_rules": global_rules_clipped,
+            "instruction": instruction,
+            "libraries": libraries_payload,
+            "today": today_str,
+            "items": chunk_items,
+        });
+        let stage_label = if total_p1_chunks > 1 {
+            format!("第 1 阶段：按规则总览匹配目标文件夹（第 {}/{} 批，{} 项）", chunk_idx + 1, total_p1_chunks, indices.len())
+        } else {
+            "第 1 阶段：按规则总览匹配目标文件夹".to_string()
+        };
+        let (res, log): (Result<Phase1Envelope, String>, AgentAiLogDto) = ask_ai(
+            stage_label,
+            settings,
+            api_key,
+            PHASE1_PROMPT,
+            &phase1_payload,
+        );
+        (indices, res, log)
     });
-    let (phase1_res, phase1_log) = ask_ai(
-        "第 1 阶段：按规则总览匹配目标文件夹",
-        settings,
-        api_key,
-        PHASE1_PROMPT,
-        &phase1_payload,
-    );
-    let phase1: Phase1Envelope = phase1_res?;
-    let mut ai_logs = vec![phase1_log];
+
+    let mut ai_logs = Vec::new();
+    let mut by_item = HashMap::new();
+    let mut first_reply = String::new();
+    let mut any_p1_ok = false;
+    let mut last_p1_err = String::new();
+    for (indices, res, log) in p1_outputs {
+        ai_logs.push(log);
+        match res {
+            Ok(envelope) => {
+                any_p1_ok = true;
+                if first_reply.is_empty() && !envelope.reply.trim().is_empty() {
+                    first_reply = clip(&envelope.reply, 1000);
+                }
+                for action in envelope.actions {
+                    by_item.entry(action.item_id.trim().to_string()).or_insert(action);
+                }
+            }
+            Err(err) => {
+                last_p1_err = err.clone();
+                notices.push(format!("第 1 阶段部分批次（{} 项）分类失败：{err}", indices.len()));
+            }
+        }
+    }
+    if !any_p1_ok {
+        return Err(last_p1_err);
+    }
+
     let library_map = libraries
         .iter()
         .map(|library| (library.id.clone(), library.clone()))
         .collect::<HashMap<_, _>>();
-    let mut by_item = HashMap::new();
-    for action in phase1.actions {
-        by_item.entry(action.item_id.trim().to_string()).or_insert(action);
-    }
     let mut proposals = Vec::with_capacity(sources.len());
     for index in 0..sources.len() {
         let mut proposal = ItemProposal::default();
@@ -2383,7 +2430,7 @@ fn plan_classify(
         proposals.push(proposal);
     }
 
-    // ── 第 2 步：按目标文件夹分组，带完整规则链确定子文件夹、新名字和新文件夹规则草稿 ──
+    // ── 第 2 步：按目标文件夹分组（大组按 BATCH_CHUNK_SIZE 二次分片），带完整规则链确定子文件夹、新名字和新文件夹规则草稿 ──
     let mut groups: Vec<(String, Vec<String>, Vec<usize>)> = Vec::new();
     for (index, proposal) in proposals.iter().enumerate() {
         let Some(library_id) = &proposal.library_id else {
@@ -2400,7 +2447,17 @@ fn plan_classify(
     let mut drafts: Vec<(String, String, String)> = Vec::new();
     if !groups.is_empty() {
         emit_progress(app, "phase2", format!("正在按 {} 个文件夹的细则确定子文件夹和名称…", groups.len()));
-        let outputs = rules::run_parallel(groups, AI_CONCURRENCY, |(library_id, folder_parts, indexes)| {
+        let mut p2_jobs: Vec<(String, Vec<String>, Vec<usize>, usize, usize)> = Vec::new();
+        for (library_id, folder_parts, indexes) in groups {
+            let sub_sources: Vec<PathBuf> = indexes.iter().map(|&idx| sources[idx].clone()).collect();
+            let sub_chunks = chunk_item_indices(&sub_sources);
+            let sub_total = sub_chunks.len();
+            for (sub_idx, sub_chunk) in sub_chunks.into_iter().enumerate() {
+                let mapped_indexes: Vec<usize> = sub_chunk.into_iter().map(|pos| indexes[pos]).collect();
+                p2_jobs.push((library_id.clone(), folder_parts.clone(), mapped_indexes, sub_idx, sub_total));
+            }
+        }
+        let outputs = rules::run_parallel(p2_jobs, AI_CONCURRENCY, |(library_id, folder_parts, indexes, sub_idx, sub_total)| {
             let library = &library_map[&library_id];
             let mut chain = Vec::new();
             if !global_rules.trim().is_empty() {
@@ -2429,8 +2486,13 @@ fn plan_classify(
                 "existing_subfolders": folders_payload(&list_subfolders(&folder_dir, PHASE2_FOLDER_DEPTH, PHASE2_MAX_FOLDERS)),
                 "items": indexes.iter().map(|index| items[*index].clone()).collect::<Vec<_>>(),
             });
+            let stage_label = if sub_total > 1 {
+                format!("第 2 阶段：按「{target_label}」规则细化目录与命名（第 {}/{} 批，{} 项）", sub_idx + 1, sub_total, indexes.len())
+            } else {
+                format!("第 2 阶段：按「{target_label}」规则细化目录与命名")
+            };
             let (result, phase2_log): (Result<Phase2Envelope, String>, AgentAiLogDto) = ask_ai(
-                format!("第 2 阶段：按「{target_label}」规则细化目录与命名"),
+                stage_label,
                 settings,
                 api_key,
                 PHASE2_PROMPT,
@@ -2534,7 +2596,7 @@ fn plan_classify(
         })
     });
     Ok(PlanProposal {
-        reply: clip(&phase1.reply, 1000),
+        reply: first_reply,
         notices,
         items: proposals,
         drafts,
@@ -3966,7 +4028,7 @@ fn inspect_paths_blocking(paths: Vec<String>) -> Result<Vec<AgentEntryDto>, Stri
         }
         let root_str = path.to_string_lossy().to_string();
         if metadata.is_dir() {
-            let inner_files = collect_files_in_dir(&path, MAX_FOLDER_ENTRIES);
+            let inner_files = collect_files_in_dir(&path, MAX_ITEMS + 1);
             if inner_files.is_empty() {
                 if seen.insert(path_key(&path)) {
                     entries.push(AgentEntryDto {

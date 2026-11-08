@@ -1,6 +1,6 @@
 [package]
 name = "ai-file-organizer"
-version = "0.1.0"
+version = "0.1.1"
 description = "AI 文件归档助手桌面外壳"
 authors = ["AiFile"]
 edition = "2021"

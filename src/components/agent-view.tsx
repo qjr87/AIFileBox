@@ -71,7 +71,7 @@ type AgentViewProps = {
   onOpenLibraries: () => void
 }
 
-const MAX_ATTACHMENTS = 200
+const MAX_ATTACHMENTS = 800
 const DEMO_ATTACHMENTS: Attachment[] = [
   { path: 'E:/www.98T.la@【AI真人短剧】少妇白洁1-32集玉渡黄河冰塞川拔剑四顾心茫然/www.98T.la@【AI真人短剧】少妇白洁1-32集 玉渡黄河冰塞川 拔剑四顾心茫然/www.98T.la@1.mp4', name: 'www.98T.la@1.mp4', isDir: false },
   { path: 'E:/www.98T.la@【AI真人短剧】少妇白洁1-32集玉渡黄河冰塞川拔剑四顾心茫然/www.98T.la@【AI真人短剧】少妇白洁1-32集 玉渡黄河冰塞川 拔剑四顾心茫然/www.98T.la@2.mp4', name: 'www.98T.la@2.mp4', isDir: false },
